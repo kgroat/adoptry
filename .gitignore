@@ -1,0 +1,11 @@
+.vscode
+.io-config.json
+node_modules
+bower_components
+platforms
+plugins
+config.json
+www
+resources/android
+resources/ios
+resources/wp8

@@ -1,0 +1,29 @@
+.splash {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+
+  .splash-row {
+    flex: 0 1 30px;
+
+    &.header {
+      flex-flow: row;
+      flex: 0 1 auto;
+    }
+
+    &.content {
+      flex: 1 1 auto;
+    }
+
+    &.footer {
+      flex: 0 1 65px;
+    }
+  }
+}
+
+.george {
+  background: url(../img/george.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

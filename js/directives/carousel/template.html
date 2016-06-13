@@ -1,0 +1,8 @@
+<div ng-if="photos.length" class="image-container" ng-style="{ 'left': (chosenImage * -100)+'vw' }">
+  <div class="drag-container" ng-class="{ 'dragging': dragging }" ng-style="{ 'left': (dragPosition)+'px' }" on-drag-left="dragImage($event)" on-drag-right="dragImage($event)" on-release="dropImage($event)" on-swipe-left="nextImage()" on-swipe-right="previousImage()">
+    <div class="image-full" ng-style="{ 'background-image':'url('+photo+')', 'left': (i * 100)+'vw' }" ng-repeat="(i, photo) in photos track by photo" style="position: absolute"></div>
+  </div>
+</div>
+<div style="margin: 0 3vw 3vw 3vw; padding-top: 2vw; overflow-x: scroll; white-space: nowrap">
+  <div class="image-thumb" ng-class="{'selected': chosenImage === i }" ng-style="{'background-image':'url('+thumb+')' }" ng-click="setPhoto(i)" ng-repeat="(i, thumb) in thumbnails track by thumb"></div>
+</div>

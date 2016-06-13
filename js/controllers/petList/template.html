@@ -1,0 +1,33 @@
+<ion-view view-title="Pet Listing">
+  <div ng-if="hasError" class="item item-assertive" style="position: fixed; top: 45px; width: 100%" ng-click="loadMore()">
+    Something went wrong.  Tap here to retry.
+  </div>
+  <ion-content>
+    <div class="list">
+      <a collection-repeat="pet in pets" class="item item-thumbnail-left" ng-href="{{getUrl(pet)}}">
+        <img ng-if="pet.media && pet.media.thumbnails" ng-src="{{pet.media.thumbnails[0]}}">
+        <img ng-if="!(pet.media && pet.media.thumbnails)" src="img/defaultAvatar.png">
+        <h2>{{pet.name}}</h2>
+        <p>{{getData(pet)}}</p>
+        <p>{{mapStatus(pet.status)}}</p>
+      </a>
+    </div>
+    <ion-infinite-scroll
+      on-infinite="loadMore()"
+      distance="200px">
+    </ion-infinite-scroll>
+  </ion-content>
+  <div class="action-button action-button-balanced" ng-class="{'open': actionOpen}" ng-click="setActionOpen(!actionOpen)">
+    <div class="action-button-content" ng-click="actionRedirect('#/app/filter')">
+      <i class="icon" ng-class="{'ion-plus': !actionOpen, 'ion-search': actionOpen}"></i>
+      <div class="title">Filter</div>
+    </div>
+    
+    <div class="action-item action-item-positive" ng-click="actionRedirect('#/app/pet/random')">
+      <i class="icon ion-shuffle"></i>
+      <div class="title">Random</div>
+    </div>
+
+    <div class="action-backdrop"></div>
+  </div>
+</ion-view>

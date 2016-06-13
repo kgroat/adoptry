@@ -1,0 +1,45 @@
+@mixin center-image() {
+  background: $dark;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.image-container {
+  position: relative;
+  height: 100vw;
+  -webkit-transition: left 0.5s;
+  transition: left 0.5s;
+
+  .drag-container{
+    display: block;
+    position: absolute;
+    height: 100vw;
+    width: auto;
+    &:not(.dragging){
+      -webkit-transition: left 0.4s;
+      transition: left 0.4s;
+    }
+  }
+
+  .image-full {
+    @include center-image();
+    width: 92vw;
+    height: 92vw;
+    margin: 4vw;
+  }
+}
+
+.image-thumb {
+  @include center-image();
+  width: 26.5vw;
+  height: 26.5vw;
+  margin: 0 2vw;
+  display: inline-block;
+  border: 0.5vw solid transparent;
+  &.selected {
+    border-color: $balanced;
+    -moz-box-shadow: 0 0 10px 2px $balanced;
+    -webkit-box-shadow: 0 0 10px 2px $balanced;
+    box-shadow: 0px 0px 10px 2px $balanced;
+  }
+}

@@ -1,0 +1,109 @@
+<ion-view view-title="{{getName()}}">
+  <div ng-if="hasError" class="item item-assertive" style="position: fixed; top: 45px; width: 100%" ng-click="loadPet()">
+    Something went wrong.  Tap here to retry.
+  </div>
+  <ion-content>
+    <div ng-if="!!pet">
+      <carousel photos="pet.media.photos" thumbnails="pet.media.thumbnails"></carousel>
+      <div class="item">
+        <h2><strong>{{pet.name}}</strong></h2>
+      </div>
+      <div class="item">
+        <strong>Age</strong>
+        <span class="item-note">
+          {{pet.age}}
+        </span>
+      </div>
+      <div class="item">
+        <strong>Gender</strong>
+        <span class="item-note">
+          {{mapGender(pet.sex)}}
+        </span>
+      </div>
+      <div class="item">
+        <strong>Size</strong>
+        <span class="item-note">
+          {{mapSize(pet.size)}}
+        </span>
+      </div>
+      <div class="item">
+        <strong>Animal</strong>
+        <span class="item-note">
+          {{mapType(pet.animal)}}
+        </span>
+      </div>
+      <div class="item">
+        <strong>Breed(s)</strong>
+        <span class="item-note">
+          {{mapBreeds(pet.breeds, pet.mix)}}
+        </span>
+      </div>
+      <div class="item">
+        <strong>Has Shots?</strong>
+        <span class="item-note">
+          {{has(pet.options, 'hasShots')}}
+        </span>
+      </div>
+      <div class="item">
+        <strong>Housetrained?</strong>
+        <span class="item-note">
+          {{has(pet.options, 'housetrained')}}
+        </span>
+      </div>
+      <div class="item">
+        <strong>Spayed / Neutered?</strong>
+        <span class="item-note">
+          {{has(pet.options, 'altered')}}
+        </span>
+      </div>
+      <div class="item item-body">
+        {{pet.description}}
+      </div>
+    </div>
+    <div ng-if="!pet" class="center-spinner full"><ion-spinner></ion-spinner></div>
+  </ion-content>
+  <div class="details-overlay" ng-class="{ 'show': contactVisible }">
+    <div class="overlay-content list">
+      <div class="item item-divider item-icon-left">
+        <i ng-if="isAndroid" class="icon ion-android-close" ng-click="toggleContact()"></i>
+        <i ng-if="!isAndroid" class="icon ion-ios-close-outline" ng-click="toggleContact()"></i>
+        Contact Information
+      </div>
+      <div ng-if="pet.contact.name" class="item item-icon-left">
+        <i ng-if="isAndroid" class="icon ion-android-person"></i>
+        <i ng-if="!isAndroid" class="icon ion-ios-person"></i>
+        Contact
+        <span class="item-note">
+          {{pet.contact.name}}
+        </span>
+      </div>
+      <a ng-if="hasNumbers(pet.contact.phone)" ng-href="{{getTelephoneLink(pet)}}" class="item item-icon-left">
+        <i ng-if="isAndroid" class="icon ion-android-call"></i>
+        <i ng-if="!isAndroid" class="icon ion-ios-telephone"></i>
+        Call
+        <span class="item-note">
+          {{pet.contact.phone}}
+        </span>
+      </a>
+      <a ng-if="pet.contact.email" ng-href="{{getEmailLink(pet)}}" class="item item-icon-left">
+        <i ng-if="isAndroid" class="icon ion-android-mail"></i>
+        <i ng-if="!isAndroid" class="icon ion-ios-email"></i>
+        Email
+        <span class="item-note">
+          {{pet.contact.email}}
+        </span>
+      </a>
+      <a ng-if="pet.contact.address1" ng-href="{{getAddressLink(pet)}}" class="item item-icon-left">
+        <i ng-if="isAndroid" class="icon ion-android-map"></i>
+        <i ng-if="!isAndroid" class="icon ion-map"></i>
+        Directions
+        <span class="item-note">
+          {{getFullAddress(pet)}}
+        </span>
+      </a>
+    </div>
+  </div>
+  <ion-footer-bar class="bar-balanced">
+    <h1 class="title text-positive" ng-click="toggleContact()">Contact</h1>
+  </ion-footer-bar>
+</ion-view>

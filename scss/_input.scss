@@ -1,0 +1,32 @@
+@mixin icon() {
+  position: relative;
+  right: 15px;
+  display: inline-block;
+  font-family: "Ionicons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+label.invalid {
+  border-bottom: 3px solid $assertive;
+  &:after{
+    @include icon();
+    content: '';
+    color: $assertive;
+  }
+}
+label.valid {
+  border-bottom: 3px solid $balanced;
+  &:after{
+    @include icon();
+    content: '';
+    color: $balanced;
+  }
+}

@@ -1,0 +1,111 @@
+.center-spinner{
+  display: block;
+  margin: 50px auto;
+  text-align: center;
+
+  &.full{
+    margin: 50% auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 85px;
+    text-align: center;
+
+    svg {
+      width: 20% !important;
+      height: 85px !important;
+    }
+  }
+}
+
+.center-about {
+  display: block;
+  margin: 50% auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 85px;
+  text-align: center;
+}
+
+.details-overlay {
+  background: rgba(32, 32, 32, 0.5);
+  position: absolute;
+  z-index: 7;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity 0.5s, visibility 0.5s;
+  visibility: hidden;
+
+  .overlay-content {
+    background: white;
+    position: fixed;
+    top: 100vh;
+    left: 15px;
+    right: 15px;
+    bottom: 59px;
+    -webkit-transition: top 0.5s;
+    transition: top 0.5s;
+    z-index: 8;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    .overlay-content{
+      top: 59px;
+    }
+  }
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+button.button.button-balanced,
+a.button.button-balanced {
+  color: $positive;
+}
+
+.bar.bar-balanced .title {
+  color: $positive;
+}
+
+.text-light{
+  color: $light;
+}
+.text-stable{
+  color: $stable;
+}
+.text-positive{
+  color: $positive;
+}
+.text-calm{
+  color: $calm;
+}
+.text-balanced{
+  color: $balanced;
+}
+.text-energized{
+  color: $energized;
+}
+.text-assertive{
+  color: $assertive;
+}
+.text-royal{
+  color: $royal;
+}
+.text-dark{
+  color: $dark;
+}    

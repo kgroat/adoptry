@@ -1,0 +1,37 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    <div ng-if="checking || updating" class="center-spinner">
+      <ion-spinner></ion-spinner>
+    </div>
+    <div ng-if="checking" class="padding">
+      <h3>Checking for updates...</h3>
+    </div>
+    <div ng-if="updating" class="padding">
+      <h3>Installing updates...</h3>
+    </div>
+    <div ng-if="hasUpdate" class="padding">
+      <h3>A new update is available!</h3>
+      <h3>{{hasUpdate}}</h3>
+    </div>
+    <div ng-if="!(checking || updating)" class="padding">
+      <h3>Current Version: {{version}}</h3>
+      <h3>Last update installed on:</h3>
+      <h3>{{lastUpdate}}</h3>
+    </div>
+    <div ng-if="checkingError" class="padding">
+      <h5>There was an error while checking for updates:</h5>
+      <h5>{{checkingError}}</h5>
+    </div>
+    <div ng-if="updatingError" class="padding">
+      <h5>There was an error while installing updates:</h5>
+      <h5>{{updatingError}}</h5>
+    </div>
+    <div class="padding">
+      <button ng-if="!hasUpdate" ng-disabled="checking || updating" ng-click="checkForUpdates()" class="button button-block button-balanced">Check For Update</button>
+      <button ng-if="hasUpdate" ng-disabled="checking || updating" ng-click="doUpdate()" class="button button-block button-balanced">Install Update</button>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-assertive" ng-click="clearData()">Clear Data</button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,204 @@
+
+.action-button {
+  .action-button-content {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    font-size: 30px;
+    padding: 17px;
+    line-height: 30px;
+    z-index: 10000;
+    text-align: center;
+    -moz-box-shadow: 0 3px 10px rgba(32, 32, 32, 0.5);
+    -webkit-box-shadow: 0 3px 10px rgba(32, 32, 32, 0.5);
+    box-shadow: 0px 3px 10px rgba(32, 32, 32, 0.5);
+
+    .title {
+      visibility: hidden;
+      color: black;
+      background: white;
+      font-size: 20px;
+      line-height: 20px;
+      padding: 5px;
+      border-radius: 5px;
+      position: fixed;
+      right: 112px;
+      bottom: 41px;
+      opacity: 0;
+      -webkit-transition: opacity 0.2s, visibility 0.2s;
+      transition: opacity 0.2s, visibility 0.2s;
+      z-index: 9001;
+      -moz-box-shadow: 0 1px 2px rgba(32, 32, 32, 0.5);
+      -webkit-box-shadow: 0 1px 2px rgba(32, 32, 32, 0.5);
+      box-shadow: 0px 1px 2px rgba(32, 32, 32, 0.5);
+    }
+  }
+
+  &.action-button-light .action-button-content {
+    background-color: $light;
+  }
+
+  &.action-button-stable .action-button-content {
+    background-color: $stable;
+  }
+
+  &.action-button-positive .action-button-content {
+    background-color: $positive;
+    color: white;
+  }
+
+  &.action-button-calm .action-button-content {
+    background-color: $calm;
+    color: white;
+  }
+
+  &.action-button-balanced .action-button-content {
+    background-color: $balanced;
+    color: $positive;
+  }
+
+  &.action-button-energized .action-button-content {
+    background-color: $energized;
+    color: white;
+  }
+
+  &.action-button-assertive .action-button-content {
+    background-color: $assertive;
+    color: white;
+  }
+
+  &.action-button-royal .action-button-content {
+    background-color: $royal;
+    color: white;
+  }
+
+  &.action-button-dark .action-button-content {
+    background-color: $dark;
+    color: white;
+  }
+
+  .action-backdrop {
+    visibility: hidden;
+    opacity: 0;
+    background: $stable;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9000;
+    -webkit-transition: opacity 0.2s, visibility 0.2s;
+    transition: opacity 0.2s, visibility 0.2s;
+  }
+
+  .action-item {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    font-size: 30px;
+    padding: 9px;
+    line-height: 30px;
+    text-align: center;
+    -webkit-transition: bottom 0.3s;
+    transition: bottom 0.3s;
+    -moz-box-shadow: 0 3px 10px rgba(32, 32, 32, 0.5);
+    -webkit-box-shadow: 0 3px 10px rgba(32, 32, 32, 0.5);
+    box-shadow: 0px 3px 10px rgba(32, 32, 32, 0.5);
+
+    .title {
+      visibility: hidden;
+      color: black;
+      background: white;
+      font-size: 20px;
+      line-height: 20px;
+      padding: 5px;
+      border-radius: 5px;
+      position: fixed;
+      right: 112px;
+      opacity: 0;
+      -webkit-transition: opacity 0.2s, bottom 0.3s, visibility 0.2s;
+      transition: opacity 0.2s, bottom 0.3s, visibility 0.2s;
+      z-index: 9001;
+      -moz-box-shadow: 0 1px 2px rgba(32, 32, 32, 0.5);
+      -webkit-box-shadow: 0 1px 2px rgba(32, 32, 32, 0.5);
+      box-shadow: 0px 1px 2px rgba(32, 32, 32, 0.5);
+    }
+
+    &.action-item-light {
+      background-color: $light;
+    }
+
+    &.action-item-stable {
+      background-color: $stable;
+    }
+
+    &.action-item-positive {
+      background-color: $positive;
+      color: white;
+    }
+
+    &.action-item-calm {
+      background-color: $calm;
+      color: white;
+    }
+
+    &.action-item-balanced {
+      background-color: $balanced;
+      color: white;
+    }
+
+    &.action-item-energized {
+      background-color: $energized;
+      color: white;
+    }
+
+    &.action-item-assertive {
+      background-color: $assertive;
+      color: white;
+    }
+
+    &.action-item-royal {
+      background-color: $royal;
+      color: white;
+    }
+
+    &.action-item-dark {
+      background-color: $dark;
+      color: white;
+    }
+  }
+
+  @for $i from 1 through 10 {
+    .action-item:nth-of-type( #{$i} ) {
+      z-index: 10000 - $i;
+      .title {
+        bottom: (($i - 1) * 64px + 33px);
+      }
+    }
+  }
+
+  &.open {
+    @for $i from 1 through 10 {
+      .action-item:nth-of-type( #{$i} ) {
+        bottom: (($i - 1) * 64px + 40px);
+        .title {
+          bottom: (($i - 1) * 64px + 49px);
+        }
+      }
+    }
+    .title {
+      opacity: 1;
+      visibility: visible;
+    }
+    .action-backdrop {
+      visibility: visible;
+      opacity: 0.7;
+    }
+  }
+}

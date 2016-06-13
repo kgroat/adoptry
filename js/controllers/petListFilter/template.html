@@ -1,0 +1,56 @@
+<ion-view view-title="Filter">
+  <ion-nav-buttons></ion-nav-buttons>
+  <ion-content>
+    <form name="filterForm" ng-submit="submit()" class="list">
+      <label class="item item-input">
+        <span class="input-label">Zip Code</span>
+        <input validate type="text" required pattern="[0-9.]{5}" ng-model="filter.zip" />
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">Kind of Animal</span>
+        <select ng-model="filter.animal">
+          <option value="">All</option>
+          <option value="cat">Cat</option>
+          <option value="dog">Dog</option>
+          <option value="smallfurry">Small & Furry</option>
+          <option value="bird">Bird</option>
+          <option value="reptile">Reptile / Amphibian</option>
+          <option value="horse">Horse</option>
+          <option value="pig">Pig</option>
+          <option value="barnyard">Barn Animal</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">Size</span>
+        <select ng-model="filter.size">
+          <option value="">All</option>
+          <option value="S">Small</option>
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+          <option value="XL">Extra Large</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">Gender</span>
+        <select ng-model="filter.sex">
+          <option value="">Both</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">Age</span>
+        <select ng-model="filter.age">
+          <option value="">All</option>
+          <option value="Baby">Baby</option>
+          <option value="Young">Young</option>
+          <option value="Adult">Adult</option>
+          <option value="Senior">Senior</option>
+        </select>
+      </label>
+      <div class="padding">
+        <button ng-disabled="filterForm.$invalid" class="button icon-left ion-search button-balanced button-block" type="submit">Search</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
