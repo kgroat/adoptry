@@ -4,6 +4,7 @@ var app = angular.module('adoptry', [
   'ionic',
   'ionic.service.core',
   'angular-md5',
+  'ngCordova',
   require('./directives/index'),
   require('./controllers/index'),
   require('./services/index')])

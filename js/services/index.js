@@ -5,6 +5,7 @@ require('./bluebird');
 require('./config');
 require('./error');
 require('./httpBase');
+require('./location');
 require('./navigateReplace');
 require('./petService');
 require('./spinner');

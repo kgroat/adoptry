@@ -6,15 +6,6 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
-var uglify = require('gulp-uglify');
-var shell = require('gulp-shell');
-
-
-
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -25,16 +16,6 @@ var paths = {
 
 gulp.task('default', ['build']);
 
-gulp.task('serve', ['build'], shell.task([
-  'ionic serve'
-]));
-
-gulp.task('build', ['browserify', 'copy-lib', 'sass', 'copy-static'], shell.task([
-  'ionic config build'
-]));
-
-gulp.task('dev', ['build', 'watch']);
-
 gulp.task('sass', function() {
   return gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
@@ -44,31 +25,6 @@ gulp.task('sass', function() {
     }))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./www/css/'));
-});
-
-gulp.task('browserify', function () {
-  var b = browserify({
-    entries: './js/app.js',
-    debug: true
-  });
-
-  return b.bundle()
-    .pipe(source('./js/app.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
-        .on('error', gutil.log)
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./www'));
-});
-
-gulp.task('copy-static', function(){
-  return gulp.src(paths.static)
-  .pipe(gulp.dest('./www'));
-});
-
-gulp.task('copy-lib', function(){
-  return gulp.src(paths.lib)
-  .pipe(gulp.dest('./www/lib'));
 });
 
 gulp.task('watch', function() {
@@ -95,4 +51,45 @@ gulp.task('git-check', function(done) {
     process.exit(1);
   }
   done();
+});
+
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var sourcemaps = require('gulp-sourcemaps');
+var shell = require('gulp-shell');
+
+gulp.task('dev', ['build', 'watch']);
+
+gulp.task('serve', ['build'], shell.task([
+  'ionic serve'
+]));
+
+gulp.task('build', ['browserify', 'copy-lib', 'sass', 'copy-static'], shell.task([
+  'ionic config build'
+]));
+
+gulp.task('browserify', function () {
+  var b = browserify({
+    entries: './js/app.js',
+    debug: true
+  });
+
+  return b.bundle()
+    .pipe(source('./js/app.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+        .on('error', gutil.log)
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./www'));
+});
+
+gulp.task('copy-static', function(){
+  return gulp.src(paths.static)
+  .pipe(gulp.dest('./www'));
+});
+
+gulp.task('copy-lib', function(){
+  return gulp.src(paths.lib)
+  .pipe(gulp.dest('./www/lib'));
 });
