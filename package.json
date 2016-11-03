@@ -5,6 +5,10 @@
   "repository": "https://github.com/kgroat/adoptry",
   "license": "ISC",
   "private": true,
+  "scripts": {
+    "pub:ios": "ionic package build ios --release --profile production",
+    "pub:android": "ionic package build android --release --profile production"
+  },
   "dependencies": {
     "angular-md5": "^0.1.10",
     "bluebird": "^3.3.5",
