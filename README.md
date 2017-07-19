@@ -1,8 +1,9 @@
 # Adoptry
 ### An app to put good pets in the homes of good people.
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.ionicframework.adoptry&hl=en&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1)
+[<img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="230" />](https://play.google.com/store/apps/details?id=com.ionicframework.adoptry&hl=en&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1)
 
-[![Get it on the App Store](https://devimages.apple.com.edgekey.net/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg)](https://itunes.apple.com/ca/app/adoptry/id1170819932)
+[<img alt="Get it on the App Store" src="https://devimages.apple.com.edgekey.net/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" width="200" />](https://itunes.apple.com/ca/app/adoptry/id1170819932)
+
 ---
 
 ## Getting Started
